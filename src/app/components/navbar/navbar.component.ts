@@ -54,7 +54,6 @@ export class NavbarComponent{
           start: 'top 20%',
           end: 'top 0%',
           scrub: 2,
-          markers:true
 
         }
 
