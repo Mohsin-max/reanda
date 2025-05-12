@@ -1,68 +1,69 @@
 <!-- Navbar -->
-<nav class="fixed top-0 left-0 w-full bg-[#003574] z-50">
-  <div class="flex justify-between items-center px-6 md:px-12 xl:px-24 py-4 md:py-6">
+<div class="bg-[#003574]">
+  <nav class="fixed top-0 left-0 w-full z-50" [ngStyle]="navBg">
+    <div class="flex justify-between items-center px-6 md:px-12 xl:px-24 py-4 md:py-6 container mx-auto">
 
-    <!-- Mobile Menu Toggle Button -->
-    <button class="md:hidden text-white text-3xl focus:outline-none" (click)="toggleMenu()">
-      ☰
-    </button>
+      <!-- Mobile Menu Toggle Button -->
+      <button class="md:hidden text-white text-3xl focus:outline-none" (click)="toggleMenu()">
+        ☰
+      </button>
 
-    <!-- Links -->
-    <div class="hidden md:flex flex-1 justify-center space-x-4 lg:space-x-10 text-sm md:text-lg uppercase text-white">
-      <a href="#">Who We Are</a>
-      <a href="#">Services</a>
-      <a href="#">Learn</a>
-      <a href="#">Contact</a>
+      <!-- Links -->
+      <div
+        class="hidden md:flex flex-1 justify-center space-x-4 lg:space-x-10 text-sm sm:text-md md:text-lg uppercase text-white">
+        <a href="#">Who We Are</a>
+        <a href="#">Services</a>
+        <a href="#">Learn</a>
+        <a href="#">Contact</a>
+      </div>
+
+
+      <!-- Client Portal Button -->
+      <button
+        class="border border-white rounded-full px-3 text-sm md:text-lg text-white whitespace-nowrap hover:bg-white hover:text-[#003574] transition">
+        Client Portal
+      </button>
     </div>
 
-    <!-- Client Portal Button -->
-    <button
-      class="border border-white rounded-full px-3 text-sm md:text-lg text-white whitespace-nowrap hover:bg-white hover:text-[#003574] transition">
-      Client Portal
-    </button>
-  </div>
+    <!-- Mobile Menu Links -->
+    <div *ngIf="menuOpen" class="md:hidden px-6 bg-[#003574] pb-4 text-white text-sm uppercase space-y-2">
+      <a href="#" class="block">Who We Are</a>
+      <a href="#" class="block">Services</a>
+      <a href="#" class="block">Learn</a>
+      <a href="#" class="block">Contact</a>
+    </div>
+  </nav>
 
-  <!-- Mobile Menu Links -->
-  <div *ngIf="menuOpen" class="md:hidden bg-[#003574] px-6 pb-4 text-white text-sm uppercase space-y-2">
-    <a href="#" class="block">Who We Are</a>
-    <a href="#" class="block">Services</a>
-    <a href="#" class="block">Learn</a>
-    <a href="#" class="block">Contact</a>
-  </div>
-</nav>
+  <!-- Hero Section -->
+  <section
+    class="min-h-[400px] container mx-auto  text-white relative flex flex-col md:flex-row items-center justify-between px-6 md:px-12 xl:px-24 2xl:px-32 pt-32 md:pt-32 gap-8 md:gap-12 pb-16">
 
-<!-- Hero Section -->
-<section
-  class="min-h-[400px] bg-[#003574] text-white relative flex flex-col md:flex-row items-center justify-between px-6 md:px-12 xl:px-24 2xl:px-32 pt-32 md:pt-32 gap-8 md:gap-12 pb-16">
 
-  <!-- Left - Large Text -->
-  <!-- <p
-    class="font-[Michroma] font-semibold text-[40px] sm:text-[80px] md:text-[100px] lg:text-[160px] xl:text-[200px] 2xl:text-[230px] leading-none text-center md:text-left w-fit">
-    finenti
-  </p> -->
+<img src="r-logo-Photoroom.png" alt=""
+     class="heroLogo logo w-[250px] md:w-[350px] lg:w-[460px] xl:w-[550px] 2xl:w-[600px] block leading-none text-center md:text-left">
 
-  <img src="r-logo-Photoroom.png" alt=""
-    class="w-[250px] md:w-[350px] lg:w-[460px] xl:w-[550px] 2xl:w-[600px] block leading-none text-center md:text-left">
 
-  <!-- Right Content -->
-  <div class="w-full text-center md:text-left md:pl-8 md:border-l border-white">
+    <!-- Right Content -->
+    <div class="w-full text-center md:text-left md:pl-8 md:border-l border-white">
 
-    <ul
-      class="space-y-1 text-base sm:text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl mb-4 font-medium leading-6 xl:leading-8 2xl:leading-10">
-      <li>Accounting</li>
-      <li>Fractional CFO</li>
-      <li>Tax</li>
-    </ul>
+      <ul
+        class="space-y-1 text-base sm:text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl mb-4 font-medium leading-6 xl:leading-8 2xl:leading-10">
+        <li>Accounting</li>
+        <li>Fractional CFO</li>
+        <li>Tax</li>
+      </ul>
 
-    <p class="text-sm sm:text-base md:text-md lg:text-xl xl:text-2xl 2xl:text-xl xl:leading-6 2xl:leading-8">
-      Accounting, Fractional CFO and Tax services that deliver clarity on your business performance, with the
-      support of a trusted partner to guide you in the right direction.
-    </p>
+      <p class="text-sm sm:text-base md:text-md lg:text-xl xl:text-2xl 2xl:text-xl xl:leading-6 2xl:leading-8">
+        Accounting, Fractional CFO and Tax services that deliver clarity on your business performance, with the
+        support of a trusted partner to guide you in the right direction.
+      </p>
 
-    <div class="mt-8 flex justify-center md:justify-end pr-0 md:pr-4">
-      <i class="ri-arrow-down-line text-4xl"></i>
+      <div class="mt-8 flex justify-center md:justify-end pr-0 md:pr-4">
+        <i class="ri-arrow-down-line text-4xl"></i>
+      </div>
+
     </div>
 
-  </div>
+  </section>
 
-</section>
+</div>
