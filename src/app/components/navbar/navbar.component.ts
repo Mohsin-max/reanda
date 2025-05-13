@@ -34,7 +34,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     if (isPlatformBrowser(this.platformId)) {
       gsap.registerPlugin(ScrollTrigger);
       ScrollTrigger.matchMedia({
-        "(min-width: 769px)": function () {
+        "(min-width: 425px)": function () {
           // Create timeline for smooth transitions
           const tl = gsap.timeline({
             scrollTrigger: {
@@ -62,7 +62,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
             duration: 0.67
           });
 
-          // Pinning the logo container
+           // Pinning the logo container
           ScrollTrigger.create({
             trigger: '.logoWrapper',
             start: 'top top',
@@ -72,6 +72,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
           });
         }
       });
+
     }
   }
 
