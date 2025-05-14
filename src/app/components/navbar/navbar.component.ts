@@ -21,12 +21,37 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
   }
 
   @HostListener("document:scroll") Scrollover() {
-    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
       this.navBg = { 'background-color': '#003574' }
     } else {
       this.navBg = {}
     }
   }
+
+  // navVisible = true;
+  // private lastScrollTop = 0;
+  // private scrollThreshold = 500;
+
+  // @HostListener('window:scroll', [])
+  // onWindowScroll() {
+  //   const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  //   // 👇 100px se kam scroll pe kuch na karo
+  //   if (currentScroll < this.scrollThreshold) {
+  //     this.navVisible = true;
+  //     return;
+  //   }
+
+  //   if (currentScroll > this.lastScrollTop) {
+  //     // scrolling down
+  //     this.navVisible = false;
+  //   } else {
+  //     // scrolling up
+  //     this.navVisible = true;
+  //   }
+
+  //   this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  // }
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
@@ -34,7 +59,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     if (isPlatformBrowser(this.platformId)) {
       gsap.registerPlugin(ScrollTrigger);
       ScrollTrigger.matchMedia({
-        "(min-width: 425px)": function () {
+        "(min-width: 768px)": function () {
           // Create timeline for smooth transitions
           const tl = gsap.timeline({
             scrollTrigger: {
@@ -62,7 +87,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
             // duration: 0.67
           });
 
-           // Pinning the logo container
+          // Pinning the logo container
           ScrollTrigger.create({
             trigger: '.logoWrapper',
             start: 'top top',

@@ -1,10 +1,32 @@
-<section class="relative bg-[#003574]">
+<section class="relative w-full h-fit bg-[#003574] pt-2">
 
-    <img src="/sky.jpg" alt="" class="mountainImg w-full h-[30rem] md:h-[40rem] lg:h-[45rem] xl:h-[50rem] 2xl:h-[60rem] scale-[0.9]">
+    <div class="sticky top-0 h-screen w-full z-0">
+        <img src="/sky.jpg" alt="Background Image"
+            class="mountainImg w-full h-96 md:h-full scale-[0.93]" />
 
-    <!-- Top Left Text -->
-    <p class="mountainText opacity-0 absolute top-20 left-1/2 -translate-1/2 md:-translate-0 md:left-0 text-center text-3xl md:ml-10 lg:ml-30 md:text-6xl lg:text-7xl text-[#003574] md:ps-10">
-        Accounting Clarity
-    </p>
+        <div>
+            <p
+                class="mountainText opacity-0 absolute top-8 md:top-20 left-[55%] md:left-0 -translate-x-1/2 md:-translate-x-0 text-start text-3xl w-full md:text-6xl lg:text-8xl text-[#003574] md:ps-10">
+                Accounting Clarity
+            </p>
+
+            <p
+                class="mountainText opacity-0 absolute bottom-60 md:bottom-20 left-[50%] md:left-1/2 -translate-x-1/2  md:translate-x-0 text-start text-xl  md:text-6xl lg:text-4xl w-full md:w-[40%] text-[#003574] font-medium">
+                Tailored for small to mid-size businesses and dynamic startups.
+            </p>
+        </div>
+    </div>
+
+    <div class="relative z-10 -mt-screen">
+
+        <section class="w-full bg-white py-16 md:py-24 px-6 md:px-18">
+            <div class="w-full mx-auto flex flex-col md:flex-row items-start gap-10 md:gap-16">
+
+                <app-services></app-services>
+
+            </div>
+        </section>
+
+    </div>
 
 </section>
