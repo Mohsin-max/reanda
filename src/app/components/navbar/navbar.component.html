@@ -1,14 +1,12 @@
 <!-- Navbar -->
-<div class="bg-[#003574]">
+<div class="bg-[#003574] overflow-hidden">
   <nav class="fixed top-0 left-0 w-full z-50 transition-transform duration-300" [style]="navBg">
-    <div class="flex justify-between items-center px-4 md:px-6 py-8 container mx-auto">
+    <div class="flex justify-between items-center px-4 md:px-6 py-4 md:py-8 container mx-auto">
 
       <div class="lg:w-44 h-0.5 hidden md:block"></div>
-      <!-- <img src="r-logo-Photoroom.png" alt="Hero Logo" class="w-52 hidden md:block" routerLink="/"> -->
 
-
-      <!-- Mobile Menu Button -->
-      <button class="lg:hidden text-white text-3xl focus:outline-none" (click)="toggleMenu()">
+      <!-- Mobile Menu Button (Right Aligned) -->
+      <button class="lg:hidden text-white text-3xl focus:outline-none ms-auto" (click)="toggleMenu()">
         ☰
       </button>
 
@@ -23,52 +21,82 @@
 
       <!-- Client Portal -->
       <button
-        class="uppercase border border-white rounded-full px-4 py-[2px] text-sm md:text-md text-white whitespace-nowrap hover:bg-white hover:text-[#003574] transition cursor-pointer">
+        class="lg:block hidden uppercase border border-white rounded-full px-3 py-[3px] text-sm md:text-md text-white whitespace-nowrap hover:bg-white hover:text-[#003574] transition cursor-pointer">
         Client Portal
       </button>
     </div>
 
-    <!-- Mobile Menu Links -->
-    <div *ngIf="menuOpen" class="lg:hidden px-6 bg-[#003574] pb-4 text-white text-sm uppercase space-y-2 relative z-50">
-      <a href="#" class="block">Who We Are</a>
-      <a href="#" class="block">Services</a>
-      <a href="#" class="block">Learn</a>
-      <a href="#" class="block">Contact</a>
+    <!-- ✅ Fullscreen Mobile Menu Slide-in from Left -->
+    <div
+      class="lg:hidden fixed top-0 left-0 w-full h-screen bg-[#003574] text-white text-sm uppercase px-6 py-10 z-50 transform transition-transform duration-300 ease-in-out"
+      [ngClass]="{ 'translate-x-0': menuOpen, '-translate-x-full': !menuOpen }"
+    >
+      <!-- Close Button -->
+      <div class="flex justify-end -mt-5">
+        <button (click)="toggleMenu()" class="text-white text-3xl">
+          ✕
+        </button>
+      </div>
+
+      <!-- Menu Links -->
+      <div class="flex flex-col space-y-10 mt-10 text-4xl">
+        <a href="#" class="block">Who We Are</a>
+        <a href="#" class="block">Services</a>
+        <a href="#" class="block">Learn</a>
+        <a href="#" class="block">Contact</a>
+        <a href="#" class="block">Client Portal</a>
+      </div>
     </div>
   </nav>
+
   <!-- Hero Section -->
   <section
-    class="min-h-[400px] bg-[#003574] container mx-auto text-white relative flex flex-col lg:flex-row items-center justify-between px-4 md:px-6 pt-32 md:pt-40">
+    class="min-h-[400px] bg-[#003574] container mx-auto text-white relative flex flex-col lg:flex-row items-center justify-between px-4 md:px-6 pt-20 pb-10 md:pt-30">
 
     <!-- Left Content -->
     <div class="logoWrapper w-full lg:w-[65%] flex justify-center items-center md:justify-start relative z-40 md:z-50">
-      <div class="logoInner relative w-[900px]  lg:ml-4">
+      <div class="logoInner relative lg:w-[550px] xl:w-[900px] lg:ml-3 xl:ml-0 pointer-events-none">
         <img src="r-logo-Photoroom.png" alt="Hero Logo" class="heroLogo w-full" routerLink="/">
       </div>
     </div>
 
     <!-- Right Content -->
-    <div class="w-full lg:w-[35%] text-center md:text-left md:pl-12 md:border-l border-white/30">
+    <div
+      class="hidden lg:block w-full lg:w-[35%] text-center md:text-left md:pl-12 md:border-l border-white/30 lg:mr-16">
 
       <ul
-        class="space-y-1 text-base sm:text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl mb-7 font-normal leading-4 xl:leading-6 2xl:leading-8">
+        class="space-y-1 text-base sm:text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl mb-7 font-normal leading-4 xl:leading-6 2xl:leading-8 ">
         <li>Accounting</li>
         <li>Fractional CFO</li>
         <li>Tax</li>
       </ul>
 
       <p
-        class="md:w-[94%] text-sm sm:text-base font-normal md:text-md lg:text-lg xl:text-xl xl:leading-4 2xl:leading-7">
+        class="md:w-[98%] lg:w-[310px] xl:w-[98%] text-sm sm:text-base font-normal md:text-md lg:text-sm xl:text-xl xl:leading-4 2xl:leading-7">
         Accounting, Fractional CFO and Tax services that deliver clarity on your business performance, with the
         support of a trusted partner to guide you in the right direction.
       </p>
 
-      <div class="hidden sm:flex justify-center md:justify-end md:-mt-10">
+      <div class="hidden lg:flex justify-center md:justify-end -mt-10 -mr-18">
         <i class="ri-arrow-down-line text-4xl"></i>
       </div>
-
     </div>
 
-  </section>
+    <!-- Mobile Text -->
+    <div class="lg:hidden flex w-full text-start">
+      <ul class="space-y-1 text-xl w-82 sm:w-60 md:w-45 font-normal leading-6">
+        <li>Accounting</li>
+        <li>Fractional CFO</li>
+        <li>Tax</li>
+      </ul>
 
+      <!-- Vertical Line -->
+      <div class="w-px bg-white/30 mx-4"></div>
+
+      <p class="text-base w-full font-normal ">
+        Accounting, Fractional CFO and Tax services that deliver clarity on your business performance, with the
+        support of a trusted partner to guide you in the right direction.
+      </p>
+    </div>
+  </section>
 </div>

@@ -21,7 +21,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
   }
 
   @HostListener("document:scroll") Scrollover() {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
       this.navBg = { 'background-color': '#003574' }
     } else {
       this.navBg = {}
@@ -75,7 +75,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
           tl.to('.heroLogo', {
             scale: 0.5,
             x: '-25%',
-            y: '-20%',
+            y: '-25%',
             // duration: 0.33
           });
 

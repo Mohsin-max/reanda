@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     AOS.init({
-      duration: 2000,
+      duration: 1000,
       once: true
     });
   }
