@@ -1,17 +1,17 @@
-<div class="flex flex-col space-y-12 pb-12 py-12">
+<div class="flex flex-col space-y-12 pb-12 py-6 md:py-0">
 
     <!-- TOP SECTION -->
     <div class="flex flex-col lg:flex-row items-start justify-start gap-6 md:gap-8">
         <!-- Left Text -->
-        <div class="w-full lg:w-2/5">
+        <div class="w-full xl:w-2/5">
             <h1 class="text-3xl md:text-4xl font-normal mb-4">
-                Un Quatuor <br> Complémentaire
+                Un Quatuor Complémentaire
             </h1>
         </div>
 
         <!-- Right Text -->
-        <div class="w-full md:w-3/5">
-            <p class="text-base text-black leading-5 2xl:w-[650px]">
+        <div class="w-full xl:w-3/5">
+            <p class="text-base text-black leading-5 xl:w-[650px]">
                 Un quatuor complémentaire couvrant tous les aspects financiers, stratégiques et tactiques liés à
                 l'évaluation et à l'exécution des transactions financières, ainsi que la gestion et la planification
                 financière et les conseils en investissement.
@@ -20,26 +20,26 @@
     </div>
 
     <!-- BOTTOM SECTION -->
-    <div class="flex flex-col lg:flex-row gap-6 md:gap-8 mt-4">
+    <div class="flex flex-col xl:flex-row gap-6 md:gap-8 mt-4">
         <!-- Left Text -->
-        <div class="lg:w-2/5 flex items-start">
-            <h2 class="text-xl md:text-2xl lg:text-3xl font-medium leading-6 lg:leading-8 md:w-[450px]">
+        <div class="xl:w-2/5 flex items-start">
+            <h2 class="text-[25px] lg:text-3xl font-medium leading-6 lg:leading-8 xl:w-[450px]">
                 Une large gamme d'expertises et de services, adaptés aux besoins variés de nos clients.
             </h2>
         </div>
 
         <!-- Right Cards -->
-        <div class="lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="xl:w-3/5 grid grid-cols-1 xl:grid-cols-2 gap-4">
 
-            <!-- CARD 1-->
-            <div class="bg-[#EAEAE8] group p-6 flex flex-col justify-between h-[380px] lg:min-h-[450px] cursor-pointer"
+            <!-- CARD -->
+            <div class="bg-[#EAEAE8] group p-6 flex flex-col lg:h-[450px] justify-between cursor-pointer"
                 data-aos="fade-zoom-in" data-aos-delay="100" *ngFor="let card of cardDetails">
                 <div>
                     <p class="text-md mb-2">{{card.services}}</p>
                     <h3 class="text-2xl md:text-3xl mb-2 group-hover:text-[#3e4d43] transition duration-300">
                         {{card.title}}
                     </h3>
-                    <p class="text-md mt-4 mb-8 group-hover:text-[#3e4d43] transition duration-300 leading-5">
+                    <p class="text-md mt-4 mb-8 lg:mb-0 group-hover:text-[#3e4d43] transition duration-300 leading-5">
                         {{card.desc}}
                     </p>
                 </div>

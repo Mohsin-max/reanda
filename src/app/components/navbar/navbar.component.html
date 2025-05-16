@@ -1,14 +1,19 @@
 <!-- Navbar -->
 <div class="bg-[#003574] overflow-hidden">
   <nav class="fixed top-0 left-0 w-full z-50 transition-transform duration-300" [style]="navBg">
-    <div class="flex justify-between items-center px-4 md:px-6 py-4 md:py-8 container mx-auto">
+    <div class="flex justify-between items-center py-6 px-4 md:px-6 container mx-auto">
 
       <div class="lg:w-44 h-0.5 hidden md:block"></div>
+      <!-- <img src="r-logo-Photoroom.png" alt="Navbar Logo" class="navbarLogo opacity-0 w-[200px] mt-2" /> -->
+
 
       <!-- Mobile Menu Button (Right Aligned) -->
       <button class="lg:hidden text-white text-3xl focus:outline-none ms-auto" (click)="toggleMenu()">
         ☰
       </button>
+
+      <!-- <img src="r-logo-Photoroom.png" alt="Navbar Logo" class="navbarLogo opacity-0 w-[200px] mt-2" /> -->
+
 
       <!-- Desktop Links -->
       <div
@@ -29,8 +34,7 @@
     <!-- ✅ Fullscreen Mobile Menu Slide-in from Left -->
     <div
       class="lg:hidden fixed top-0 left-0 w-full h-screen bg-[#003574] text-white text-sm uppercase px-6 py-10 z-50 transform transition-transform duration-300 ease-in-out"
-      [ngClass]="{ 'translate-x-0': menuOpen, '-translate-x-full': !menuOpen }"
-    >
+      [ngClass]="{ 'translate-x-0': menuOpen, '-translate-x-full': !menuOpen }">
       <!-- Close Button -->
       <div class="flex justify-end -mt-5">
         <button (click)="toggleMenu()" class="text-white text-3xl">
@@ -54,8 +58,8 @@
     class="min-h-[400px] bg-[#003574] container mx-auto text-white relative flex flex-col lg:flex-row items-center justify-between px-4 md:px-6 pt-20 pb-10 md:pt-30">
 
     <!-- Left Content -->
-    <div class="logoWrapper w-full lg:w-[65%] flex justify-center items-center md:justify-start relative z-40 md:z-50">
-      <div class="logoInner relative lg:w-[550px] xl:w-[900px] lg:ml-3 xl:ml-0 pointer-events-none">
+    <div class="logoWrapper w-full lg:w-[65%] flex justify-center items-center md:justify-start relative z-40 lg:z-50">
+      <div class="logoInner relative xl:ml-0 pointer-events-none">
         <img src="r-logo-Photoroom.png" alt="Hero Logo" class="heroLogo w-full" routerLink="/">
       </div>
     </div>
