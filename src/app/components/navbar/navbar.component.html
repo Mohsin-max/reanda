@@ -2,9 +2,13 @@
 <div class="bg-[#003574] overflow-hidden">
   <nav class="fixed top-0 left-0 w-full z-50 transition-transform duration-300" [style]="navBg"
     [class.-translate-y-full]="navHidden">
-    <div class="flex justify-end items-center py-6 px-4 lg:px-12">
+    <div class="flex justify-between items-center py-1 lg:py-6 px-4 lg:px-12">
 
       <div class="lg:w-44 h-0.5 hidden md:block"></div>
+
+      <div class="lg:hidden mr-auto opacity-0 transition-opacity duration-500 ease-in-out" #mobileLogo>
+        <img src="r-logo-Photoroom.png" alt="Mobile Logo" class="w-40 h-auto mt-2" />
+      </div>
 
       <!-- Hamburger Button -->
       <button class="lg:hidden flex flex-col justify-between w-12 h-6 z-50 focus:outline-none" (click)="toggleMenu()">
@@ -59,14 +63,15 @@
   class="min-h-[400px] w-full bg-[#003574] text-white relative flex flex-col lg:flex-row items-center justify-between px-4 md:px-6 pt-20 pb-10 md:pt-30">
 
   <!-- Left Content -->
-    <div class="logoWrapper w-full lg:w-[65%] flex justify-center items-center relative z-40 lg:z-50" >
-      <div class="logoInner relative xl:ml-0 pointer-events-none" [class.logo-hidden]="navHidden">
-        <img src="r-logo-Photoroom.png" alt="Hero Logo" class="heroLogo w-full" routerLink="/">
-      </div>
+  <div class="logoWrapper w-full lg:w-[65%] flex justify-center items-center relative z-40 lg:z-50">
+    <div class="logoInner relative xl:ml-0 pointer-events-none" [class.logo-hidden]="navHidden">
+      <img src="r-logo-Photoroom.png" alt="Hero Logo" class="heroLogo w-full" routerLink="/">
     </div>
+  </div>
 
   <!-- Right Content -->
-  <div class="hidden lg:block w-full lg:w-[35%] text-center md:text-left lg:pl-12 xl:pl-12 md:border-l border-white/30 lg:mr-8 xl:mr-16">
+  <div
+    class="hidden lg:block w-full lg:w-[35%] text-center md:text-left lg:pl-12 xl:pl-12 md:border-l border-white/30 lg:mr-8 xl:mr-16">
 
     <ul
       class="space-y-1 text-base sm:text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl mb-7 font-normal leading-4 xl:leading-6 2xl:leading-8 ">
@@ -75,8 +80,7 @@
       <li>Tax</li>
     </ul>
 
-    <p
-      class="md:w-[98%] lg:w-[310px] xl:w-[98%] text-sm sm:text-base font-normal md:text-md lg:text-sm xl:text-xl">
+    <p class="md:w-[98%] lg:w-[310px] xl:w-[98%] text-sm sm:text-base font-normal md:text-md lg:text-sm xl:text-xl">
       Accounting, Fractional CFO and Tax services that deliver clarity on your business performance, with the
       support of a trusted partner to guide you in the right direction.
     </p>

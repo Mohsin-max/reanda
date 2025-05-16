@@ -1,5 +1,14 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, OnDestroy, Component, Inject, PLATFORM_ID, HostListener } from '@angular/core';
+import {
+  AfterViewInit,
+  OnDestroy,
+  Component,
+  Inject,
+  PLATFORM_ID,
+  HostListener,
+  ElementRef,
+  ViewChild
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,120 +23,58 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 export class NavbarComponent implements AfterViewInit, OnDestroy {
 
   menuOpen = false;
-  navBg: any;
-
+  navBg: any = {};
   isScrolled = false;
+  navHidden = false;
+
+  private lastScrollTop = 0;
+  private scrollThreshold = 600;
+
+  @ViewChild('mobileLogo', { static: false }) mobileLogo!: ElementRef;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
 
+  // ✅ Merged scroll listener
   @HostListener('window:scroll', [])
-  onWindowScroll() {
-    this.isScrolled = window.scrollY > 50;
-  }
-
-  @HostListener("document:scroll")
-  Scrollover() {
-    const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+  onWindowScrollMerged() {
     const screenWidth = window.innerWidth;
-
-    // 👇 threshold decide karo screen width ke hisaab se
-    const scrollThreshold = screenWidth < 768 ? 200 : 800;
-
-    if (scrollTop > scrollThreshold) {
-      this.navBg = { 'background-color': '#003574' };
-    } else {
-      this.navBg = {};
-    }
-  }
-
-  navHidden = false;
-  private lastScrollTop = 0;
-  private scrollThreshold = 600; // Default for desktop
-
-  @HostListener('window:scroll', [])
-  onWindowScroll2() {
-    const screenWidth = window.innerWidth;
-
-    // ✅ Mobile screen: adjust threshold
-    const threshold = screenWidth < 768 ? 200 : this.scrollThreshold;
-
     const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
+    // ✅ Navbar hide/show logic
+    const threshold = screenWidth < 768 ? 200 : this.scrollThreshold;
     if (currentScroll < threshold) {
       this.navHidden = false;
-      return;
-    }
-
-    if (currentScroll > this.lastScrollTop) {
-      // Scrolling down → hide navbar
-      this.navHidden = true;
+    } else if (currentScroll > this.lastScrollTop) {
+      this.navHidden = true; // Scroll down
     } else {
-      // Scrolling up → show navbar
-      this.navHidden = false;
+      this.navHidden = false; // Scroll up
+    }
+    this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+
+    // ✅ Mobile logo fade in/out
+    if (screenWidth < 1024 && this.mobileLogo?.nativeElement) {
+      this.mobileLogo.nativeElement.style.opacity = currentScroll > 200 ? '1' : '0';
     }
 
-    this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    // ✅ Sticky navbar bg color
+    const scrollThresholdForBg = screenWidth < 768 ? 200 : 800;
+    this.navBg = currentScroll > scrollThresholdForBg ? { 'background-color': '#003574' } : {};
+
+    // ✅ Scrolled class (for shadow or style)
+    this.isScrolled = currentScroll > 50;
   }
 
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
-
-  // ngAfterViewInit(): void {
-  //   if (isPlatformBrowser(this.platformId)) {
-  //     gsap.registerPlugin(ScrollTrigger);
-
-  //     ScrollTrigger.matchMedia({
-  //       "(min-width: 768px)": () => {
-  //         const tl = gsap.timeline({
-  //           scrollTrigger: {
-  //             trigger: '.logoWrapper',
-  //             start: 'top 100',
-  //             end: '+=500', // adjust as needed
-  //             scrub: 0.3,
-  //             onUpdate: (self) => {
-  //               const progress = self.progress;
-
-  //               // Jab animation 90% complete ho jaye
-  //               if (progress > 0.95) {
-  //                 gsap.to('.heroLogo', { autoAlpha: 0, });
-  //                 gsap.to('.navbarLogo', { autoAlpha: 1, opacity: '1' });
-  //               } else {
-  //                 gsap.to('.heroLogo', { autoAlpha: 1, });
-  //                 gsap.to('.navbarLogo', { autoAlpha: 0, opacity: '1' });
-  //               }
-  //             }
-  //           }
-  //         });
-
-  //         // Animate hero logo scale + position
-  //         tl.to('.heroLogo', {
-  //           scale: 0.3,
-  //           x: '-35%',
-  //           y: '-25%',
-  //           // ease: 'power1.out',
-  //         });
-
-  //         // Pinning the logo
-  //         ScrollTrigger.create({
-  //           trigger: '.logoWrapper',
-  //           start: 'top top',
-  //           end: '+=500',
-  //           pin: '.logoInner',
-  //           pinSpacing: false,
-  //         });
-  //       }
-  //     });
-  //   }
-  // }
-
+  // ✅ GSAP ScrollTrigger animation
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       gsap.registerPlugin(ScrollTrigger);
+
       ScrollTrigger.matchMedia({
         "(min-width: 1024px)": function () {
-          // Create timeline for smooth transitions
           const tl = gsap.timeline({
             scrollTrigger: {
               trigger: '.logoWrapper',
@@ -138,23 +85,18 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
             }
           });
 
-          // First scroll
           tl.to('.heroLogo', {
             scale: 0.5,
             x: '-25%',
             y: '-25%',
-            // duration: 0.33
           });
 
-          // Further scroll
           tl.to('.heroLogo', {
             scale: 0.3,
             x: '-40%',
             y: '-30%',
-            // duration: 0.67
           });
 
-          // Pinning the logo container
           ScrollTrigger.create({
             trigger: '.logoWrapper',
             start: 'top top',
@@ -164,13 +106,13 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
           });
         }
       });
-
     }
   }
+
+  // ✅ Clean up scroll triggers on destroy
   ngOnDestroy(): void {
     if (isPlatformBrowser(this.platformId)) {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());  // Corrected cleanup
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     }
   }
-
 }
