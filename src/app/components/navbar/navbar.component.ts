@@ -149,7 +149,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
           // Further scroll
           tl.to('.heroLogo', {
             scale: 0.3,
-            x: '-35%',
+            x: '-40%',
             y: '-30%',
             // duration: 0.67
           });
