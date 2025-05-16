@@ -8,12 +8,13 @@ import { CarriersComponent } from "./components/carriers/carriers.component";
 import { SupportComponent } from "./components/support/support.component";
 import { SectorComponent } from "./components/sector/sector.component";
 import { FooterComponent } from "./components/footer/footer.component";
+import { MainComponent } from "./components/main/main.component";
 
 declare var AOS: any;
 
 @Component({
   selector: 'app-root',
-  imports: [NavbarComponent, HeroComponent, AboutComponent, CardsComponent, CarriersComponent, SupportComponent, SectorComponent, FooterComponent],
+  imports: [NavbarComponent, HeroComponent, AboutComponent, CardsComponent, CarriersComponent, SupportComponent, SectorComponent, FooterComponent, MainComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

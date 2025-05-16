@@ -16,8 +16,15 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
   menuOpen = false;
   navBg: any;
 
+  isScrolled = false;
+
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isScrolled = window.scrollY > 50;
   }
 
   @HostListener("document:scroll")
@@ -35,34 +42,34 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  // navHidden = false;
-  // private lastScrollTop = 0;
-  // private scrollThreshold = 450; // Default for desktop
+  navHidden = false;
+  private lastScrollTop = 0;
+  private scrollThreshold = 600; // Default for desktop
 
-  // @HostListener('window:scroll', [])
-  // onWindowScroll() {
-  //   const screenWidth = window.innerWidth;
+  @HostListener('window:scroll', [])
+  onWindowScroll2() {
+    const screenWidth = window.innerWidth;
 
-  //   // ✅ Mobile screen: adjust threshold
-  //   const threshold = screenWidth < 768 ? 200 : this.scrollThreshold;
+    // ✅ Mobile screen: adjust threshold
+    const threshold = screenWidth < 768 ? 200 : this.scrollThreshold;
 
-  //   const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-  //   if (currentScroll < threshold) {
-  //     this.navHidden = false;
-  //     return;
-  //   }
+    if (currentScroll < threshold) {
+      this.navHidden = false;
+      return;
+    }
 
-  //   if (currentScroll > this.lastScrollTop) {
-  //     // Scrolling down → hide navbar
-  //     this.navHidden = true;
-  //   } else {
-  //     // Scrolling up → show navbar
-  //     this.navHidden = false;
-  //   }
+    if (currentScroll > this.lastScrollTop) {
+      // Scrolling down → hide navbar
+      this.navHidden = true;
+    } else {
+      // Scrolling up → show navbar
+      this.navHidden = false;
+    }
 
-  //   this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-  // }
+    this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  }
 
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
@@ -160,7 +167,6 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
 
     }
   }
-
   ngOnDestroy(): void {
     if (isPlatformBrowser(this.platformId)) {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());  // Corrected cleanup

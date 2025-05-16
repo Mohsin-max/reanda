@@ -1,106 +1,105 @@
 <!-- Navbar -->
 <div class="bg-[#003574] overflow-hidden">
-  <nav class="fixed top-0 left-0 w-full z-50 transition-transform duration-300" [style]="navBg">
-    <div class="flex justify-between items-center py-6 px-4 md:px-6 container mx-auto">
+  <nav class="fixed top-0 left-0 w-full z-50 transition-transform duration-300" [style]="navBg"
+    [class.-translate-y-full]="navHidden">
+    <div class="flex justify-end items-center py-6 px-12">
 
       <div class="lg:w-44 h-0.5 hidden md:block"></div>
-      <!-- <img src="r-logo-Photoroom.png" alt="Navbar Logo" class="navbarLogo opacity-0 w-[200px] mt-2" /> -->
 
-
-      <!-- Mobile Menu Button (Right Aligned) -->
-      <button class="lg:hidden text-white text-3xl focus:outline-none ms-auto" (click)="toggleMenu()">
-        ☰
+      <!-- Hamburger Button -->
+      <button class="lg:hidden flex flex-col justify-between w-12 h-6 z-50 focus:outline-none" (click)="toggleMenu()">
+        <span class="block h-[1px] bg-white transition-all duration-300"
+          [ngClass]="{ '-translate-y-2 opacity-0': menuOpen }"></span>
+        <span class="block h-[1px] bg-white transition-all duration-300"
+          [ngClass]="{ 'opacity-0 scale-90': menuOpen }"></span>
+        <span class="block h-[1px] bg-white transition-all duration-300"
+          [ngClass]="{ 'translate-y-2 opacity-0': menuOpen }"></span>
       </button>
-
-      <!-- <img src="r-logo-Photoroom.png" alt="Navbar Logo" class="navbarLogo opacity-0 w-[200px] mt-2" /> -->
-
 
       <!-- Desktop Links -->
       <div
-        class="hidden lg:flex flex-1 justify-center space-x-4 lg:space-x-12 text-sm sm:text-md lg:text-md xl:text-lg uppercase text-white">
-        <a href="#">Who We Are</a>
-        <a href="#">Services</a>
-        <a href="#">Learn</a>
-        <a href="#">Contact</a>
+        class="hidden lg:flex flex-1 justify-center space-x-10 text-[14px] md:text-[16px] lg:text-[18px] uppercase text-white tracking-wide">
+        <a href="#" class="hover:text-gray-300 transition">Who We Are</a>
+        <a href="#" class="hover:text-gray-300 transition">Services</a>
+        <a href="#" class="hover:text-gray-300 transition">Learn</a>
+        <a href="#" class="hover:text-gray-300 transition">Contact</a>
       </div>
 
-      <!-- Client Portal -->
+      <!-- Client Portal Button -->
       <button
-        class="lg:block hidden uppercase border border-white rounded-full px-3 py-[3px] text-sm md:text-md text-white whitespace-nowrap hover:bg-white hover:text-[#003574] transition cursor-pointer">
+        class="hidden lg:inline-block uppercase border border-white rounded-full px-3 py-1 text-sm md:text-md text-white whitespace-nowrap hover:bg-white hover:text-[#003574] transition cursor-pointer tracking-wide">
         Client Portal
       </button>
     </div>
 
-    <!-- ✅ Fullscreen Mobile Menu Slide-in from Left -->
+    <!-- Fullscreen Mobile Menu Slide-in from Left -->
     <div
-      class="lg:hidden fixed top-0 left-0 w-full h-screen bg-[#003574] text-white text-sm uppercase px-6 py-10 z-50 transform transition-transform duration-300 ease-in-out"
+      class="lg:hidden fixed top-0 left-0 w-full h-screen bg-[#003574] text-white text-base uppercase px-8 py-16 z-50 transform transition-transform duration-800 ease-in-out"
       [ngClass]="{ 'translate-x-0': menuOpen, '-translate-x-full': !menuOpen }">
+
       <!-- Close Button -->
-      <div class="flex justify-end -mt-5">
-        <button (click)="toggleMenu()" class="text-white text-3xl">
-          ✕
-        </button>
+      <div class="flex justify-end mb-12 -mt-8">
+        <span class="block w-14 h-[1px] bg-white cursor-pointer" (click)="toggleMenu()"></span>
       </div>
 
       <!-- Menu Links -->
-      <div class="flex flex-col space-y-10 mt-10 text-4xl">
-        <a href="#" class="block">Who We Are</a>
-        <a href="#" class="block">Services</a>
-        <a href="#" class="block">Learn</a>
-        <a href="#" class="block">Contact</a>
-        <a href="#" class="block">Client Portal</a>
+      <div class="flex flex-col space-y-8 text-4xl mt-20">
+        <a href="#" class="block hover:text-gray-300 transition" (click)="toggleMenu()">Who We Are</a>
+        <a href="#" class="block hover:text-gray-300 transition" (click)="toggleMenu()">Services</a>
+        <a href="#" class="block hover:text-gray-300 transition" (click)="toggleMenu()">Learn</a>
+        <a href="#" class="block hover:text-gray-300 transition" (click)="toggleMenu()">Contact</a>
+        <a href="#" class="block hover:text-gray-300 transition" (click)="toggleMenu()">Client Portal</a>
       </div>
     </div>
   </nav>
+</div>
 
-  <!-- Hero Section -->
-  <section
-    class="min-h-[400px] bg-[#003574] container mx-auto text-white relative flex flex-col lg:flex-row items-center justify-between px-4 md:px-6 pt-20 pb-10 md:pt-30">
+<!-- Hero Section -->
+<section
+  class="min-h-[400px] w-full bg-[#003574] text-white relative flex flex-col lg:flex-row items-center justify-between px-4 md:px-6 pt-20 pb-10 md:pt-30">
 
-    <!-- Left Content -->
-    <div class="logoWrapper w-full lg:w-[65%] flex justify-center items-center md:justify-start relative z-40 lg:z-50">
-      <div class="logoInner relative xl:ml-0 pointer-events-none">
+  <!-- Left Content -->
+    <div class="logoWrapper w-full lg:w-[65%] flex justify-center items-center relative z-40 lg:z-50" >
+      <div class="logoInner relative xl:ml-0 pointer-events-none" [class.logo-hidden]="navHidden">
         <img src="r-logo-Photoroom.png" alt="Hero Logo" class="heroLogo w-full" routerLink="/">
       </div>
     </div>
 
-    <!-- Right Content -->
-    <div
-      class="hidden lg:block w-full lg:w-[35%] text-center md:text-left md:pl-12 md:border-l border-white/30 lg:mr-16">
+  <!-- Right Content -->
+  <div class="hidden lg:block w-full lg:w-[35%] text-center md:text-left lg:pl-12 xl:pl-12 md:border-l border-white/30 lg:mr-8 xl:mr-16">
 
-      <ul
-        class="space-y-1 text-base sm:text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl mb-7 font-normal leading-4 xl:leading-6 2xl:leading-8 ">
-        <li>Accounting</li>
-        <li>Fractional CFO</li>
-        <li>Tax</li>
-      </ul>
+    <ul
+      class="space-y-1 text-base sm:text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl mb-7 font-normal leading-4 xl:leading-6 2xl:leading-8 ">
+      <li>Accounting</li>
+      <li>Fractional CFO</li>
+      <li>Tax</li>
+    </ul>
 
-      <p
-        class="md:w-[98%] lg:w-[310px] xl:w-[98%] text-sm sm:text-base font-normal md:text-md lg:text-sm xl:text-xl xl:leading-4 2xl:leading-7">
-        Accounting, Fractional CFO and Tax services that deliver clarity on your business performance, with the
-        support of a trusted partner to guide you in the right direction.
-      </p>
+    <p
+      class="md:w-[98%] lg:w-[310px] xl:w-[98%] text-sm sm:text-base font-normal md:text-md lg:text-sm xl:text-xl">
+      Accounting, Fractional CFO and Tax services that deliver clarity on your business performance, with the
+      support of a trusted partner to guide you in the right direction.
+    </p>
 
-      <div class="hidden lg:flex justify-center md:justify-end -mt-10 -mr-18">
-        <i class="ri-arrow-down-line text-4xl"></i>
-      </div>
+    <div class="hidden lg:flex justify-center md:justify-end -mt-10 -mr-10">
+      <i class="ri-arrow-down-line text-4xl"></i>
     </div>
+  </div>
 
-    <!-- Mobile Text -->
-    <div class="lg:hidden flex w-full text-start">
-      <ul class="space-y-1 text-xl w-82 sm:w-60 md:w-45 font-normal leading-6">
-        <li>Accounting</li>
-        <li>Fractional CFO</li>
-        <li>Tax</li>
-      </ul>
+  <!-- Mobile Text -->
+  <div class="lg:hidden flex w-full text-start">
+    <ul class="space-y-1 text-xl w-82 sm:w-60 md:w-45 font-normal leading-6">
+      <li>Accounting</li>
+      <li>Fractional CFO</li>
+      <li>Tax</li>
+    </ul>
 
-      <!-- Vertical Line -->
-      <div class="w-px bg-white/30 mx-4"></div>
+    <!-- Vertical Line -->
+    <div class="w-px bg-white/30 mx-4"></div>
 
-      <p class="text-base w-full font-normal ">
-        Accounting, Fractional CFO and Tax services that deliver clarity on your business performance, with the
-        support of a trusted partner to guide you in the right direction.
-      </p>
-    </div>
-  </section>
-</div>
+    <p class="text-base w-full font-normal ">
+      Accounting, Fractional CFO and Tax services that deliver clarity on your business performance, with the
+      support of a trusted partner to guide you in the right direction.
+    </p>
+  </div>
+</section>
